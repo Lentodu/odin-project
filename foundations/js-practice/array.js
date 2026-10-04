@@ -81,3 +81,26 @@ To transform the array:
     reduce/reduceRight(func, initial) – calculate a single value over the array by calling func for each element and passing an intermediate result between the calls.
 
  */
+
+const products = [
+  { id: 1, nama: "Buku", harga: 20000, stok: 5 },
+  { id: 2, nama: "Pensil", harga: 5000, stok: 0 },
+  { id: 3, nama: "Tas", harga: 150000, stok: 2 },
+  { id: 4, nama: "Penggaris", harga: 8000, stok: 10 },
+];
+
+//Ambil nama semua produk jadi satu array.
+const getNameProducts = products.map((p) => p.nama);
+console.log(getNameProducts);
+
+//Cari produk dengan id 3, lalu tampilkan harganya aja.
+const findIdProducts = products.find((p) => p.id == 3); //.map((p) => p.harga);
+console.log(findIdProducts["harga"]);
+
+//Ambil produk yang stoknya masih ada (lebih dari 0), lalu jumlahkan harganya.
+const findStockProducts = products
+  .filter((p) => p.stok > 0)
+  .map((p) => p.harga)
+  .reduce((total, p) => total + p, 0);
+
+console.log(findStockProducts);
