@@ -3,68 +3,142 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Strategic brand consulting and digital craft for ambitious brands."
     />
-    <script src="script.js"></script>
-    <title>Learn Foundations Again</title>
+    <title>Suki® — Strategic Brand Consulting</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="header">
-      <div class="logo">Logo</div>
-      <nav class="navbar">
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Contact Me</a>
-      </nav>
+      <div class="container header-inner">
+        <a href="#home" class="logo">Suki<sup>&reg;</sup></a>
+        <nav class="navbar">
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact Me</a>
+        </nav>
+      </div>
     </header>
-    <main>
-      <section class="home">
-        <div class="home-content">
-          <h1>Welcome to My Odin Project Website</h1>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            sint ipsam voluptatibus sequi quae cumque nihil. Pariatur in
-            repellendus reprehenderit tempora, illo quisquam, minima minus
-            similique qui dolores est itaque?
-          </p>
-          <button class="btn btn-home" type="button">Contact Me</button>
-        </div>
-        <div class="home-image">this is place holder for an image</div>
-      </section>
 
-      <section class="about">
-        <div class="about-content">
-          <h2>About me</h2>
-          <div class="cards">
-            <figure class="card">
-              <figcaption>RandomShit</figcaption>
-            </figure>
-            <figure class="card">
-              <figcaption>RandomShit</figcaption>
-            </figure>
-            <figure class="card">
-              <figcaption>RandomShit</figcaption>
-            </figure>
-            <figure class="card">
-              <figcaption>RandomShit</figcaption>
-            </figure>
+    <main>
+      <section class="home" id="home">
+        <div class="liquid-backdrop" aria-hidden="true">
+          <div class="liquid-glow liquid-glow--top"></div>
+          <div class="liquid-glow liquid-glow--bottom"></div>
+          <div class="liquid-ripple"></div>
+        </div>
+
+        <div class="container hero-container">
+          <h1 class="hero-title">
+            <span class="hero-line hero-line-1"><span class="text-white">Strategic brand</span></span><br />
+            <span class="hero-line hero-line-2"><span class="text-white">consulting </span><span class="text-muted">for</span></span><br />
+            <span class="hero-line hero-line-3"><span class="text-muted">ambitious brands.</span></span>
+          </h1>
+
+          <div class="hero-bottom-bar hero-fade-in">
+            <p class="hero-desc">
+              We unlock growth from the core by embedding strategy into culture and
+              commercial momentum.
+            </p>
+            <div class="hero-cta">
+              <a href="#about" class="btn-pill-outline">
+                <span>EXPLORE OUR APPROACH</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="contact">
-        <div class="contact-content">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-            porro magnam voluptas dicta reiciendis nulla sapiente placeat,
-            tempore eligendi, dolorum impedit voluptatibus deserunt, laboriosam
-            eos culpa repellendus architecto accusamus eveniet?
+      <section class="about" id="about">
+        <div class="container about-container">
+          <p class="about-statement reveal-on-scroll">
+            We believe that true brand strength lies not just in marketing. That strength
+            resides in the very core of your business&mdash;driving decisions, shaping
+            culture, and generating measurable commercial value.
           </p>
         </div>
       </section>
+
+      <section class="contact" id="contact">
+        <div class="container contact-container">
+          <div class="contact-header reveal-on-scroll">
+            <h2 class="contact-title">Contact Me.</h2>
+            <p class="contact-subtitle">
+              Our core disciplines are designed to build and sustain resilient brands.
+              Let&rsquo;s discuss your next breakthrough.
+            </p>
+          </div>
+
+          <div class="contact-cards">
+            <article class="contact-card reveal-card" data-index="1">
+              <span class="card-badge">01 //</span>
+              <h3 class="card-heading">Brand Strategy</h3>
+              <p class="card-text">
+                Positioning, architecture, and narrative design to establish clear category leadership and deep market authority.
+              </p>
+              <div class="card-action">
+                <a href="mailto:strategy@suki.design" class="card-link">
+                  <span>strategy@suki.design</span>
+                  <span class="link-arrow">&rarr;</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="contact-card reveal-card" data-index="2">
+              <span class="card-badge">02 //</span>
+              <h3 class="card-heading">Culture &amp; Internal</h3>
+              <p class="card-text">
+                Aligning internal leadership and teams with external brand promises. Embedding strategic vision into operational reality.
+              </p>
+              <div class="card-action">
+                <a href="mailto:culture@suki.design" class="card-link">
+                  <span>culture@suki.design</span>
+                  <span class="link-arrow">&rarr;</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="contact-card reveal-card" data-index="3">
+              <span class="card-badge">03 //</span>
+              <h3 class="card-heading">Commercial Alignment</h3>
+              <p class="card-text">
+                Connecting brand equity directly with commercial performance, revenue velocity, and sustainable long-term scale.
+              </p>
+              <div class="card-action">
+                <a href="mailto:growth@suki.design" class="card-link">
+                  <span>growth@suki.design</span>
+                  <span class="link-arrow">&rarr;</span>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div class="contact-footer-bar reveal-on-scroll">
+            <div class="inquiry-info">
+              <span class="status-indicator"></span>
+              <span>Available for select advisory and brand partnerships worldwide.</span>
+            </div>
+            <a href="mailto:hello@suki.design" class="btn-pill-solid">
+              <span>GET IN TOUCH</span>
+              <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span class="footer-copy">&copy; 2026 Suki&reg; Strategic Brand Consulting.</span>
+        <div class="footer-meta">
+          <span>Helvetica Editorial Edition</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
