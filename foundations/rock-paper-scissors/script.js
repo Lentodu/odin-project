@@ -1,75 +1,83 @@
 const choices = ["rock", "paper", "scissors"];
+let humanScore = 0;
+let computerScore = 0;
 
-//set Round
-function inputRound() {
-  let round = Number(prompt("Set Round: "));
-  return round;
-}
+const target = document.querySelector("#target");
+const result = document.querySelector("#result");
+const scores = document.querySelector("#scores");
+const resetButton = document.querySelector("#reset");
+const buttons = document.querySelectorAll("#buttons button");
 
 function getComputerChoice() {
   const randomChoice = Math.floor(Math.random() * 3);
   return choices[randomChoice];
 }
 
-function getHumanChoice() {
-  let humanChoice = prompt(
-    "Your choice is (rock, paper, scissors). Whats your choice: ",
-  ).toLowerCase();
-  //check if the choices is right or no
-  while (!choices.includes(humanChoice)) {
-    alert("Choice one between (rock, paper, scissors)!");
-    humanChoice = prompt(
-      "Your choice is (rock, paper, scissors). Whats your choice: ",
-    ).toLowerCase();
-  }
-  return humanChoice;
+function resetGame() {
+  humanScore = 0;
+  computerScore = 0;
+  result.textContent = "";
+  updateScore();
+  target.disabled = false;
+  setButtonDisabled(false);
 }
 
-function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
+function updateScore() {
+  scores.textContent = `Human: ${humanScore} - Computer: ${computerScore}`;
+}
 
-  function playRound(humanChoice, computerChoice) {
-    const humanWins =
-      (humanChoice === "rock" && computerChoice === "scissors") ||
-      (humanChoice === "paper" && computerChoice === "rock") ||
-      (humanChoice === "scissors" && computerChoice === "paper");
-    if (humanWins) {
-      humanScore++;
-      alert(`You win! ${humanChoice} beats ${computerChoice}`);
-      console.log("Human Win!");
-    } else if (humanChoice === computerChoice) {
-      alert(`It's a tie! You both chose ${humanChoice}`);
-      console.log("Tie!");
-    } else {
-      computerScore++;
-      alert(`You lose! ${computerChoice} beats ${humanChoice}`);
-      console.log("Computer Win!");
-    }
+function setButtonDisabled(disabled) {
+  buttons.forEach((button) => {
+    button.disabled = disabled;
+  });
+}
+
+function showWinner(targetScore) {
+  if (computerScore !== targetScore && humanScore !== targetScore) {
+    return;
   }
 
-  const round = inputRound();
-  //play game depends on the round
-  for (let i = 0; i < round; i++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
-    alert(`Human score: ${humanScore} - Computer score: ${computerScore}`);
-    console.log(`Human score: ${humanScore}`);
-    console.log(`Computer score: ${computerScore}`);
-  }
-  //final score
-  if (humanScore > computerScore) {
-    alert("Human Win the Game!");
-    console.log("Human Win the Game!");
-  } else if (computerScore > humanScore) {
-    alert("Computer Win the Game!");
-    console.log("Computer Win the Game!");
+  if (humanScore === targetScore) {
+    result.textContent += " | Human Wins!";
   } else {
-    alert("Tie!");
-    console.log("Tie!");
+    result.textContent += " | Computer Wins!";
   }
+
+  setButtonDisabled(true);
 }
 
-playGame();
+function playRound(humanChoice, computerChoice) {
+  const targetScore = Number(target.value);
+
+  if (targetScore < 1 || !Number.isInteger(targetScore)) {
+    result.textContent = "Enter a whole number, minimum 1.";
+    return;
+  }
+
+  target.disabled = true;
+
+  const humanWins =
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper");
+  if (humanWins) {
+    humanScore++;
+    result.textContent = `You win! ${humanChoice} beats ${computerChoice}, You get one point`;
+  } else if (humanChoice === computerChoice) {
+    result.textContent = `It's a tie! You both chose ${humanChoice}, Nobody gets points`;
+  } else {
+    computerScore++;
+    result.textContent = `You lose! ${computerChoice} beats ${humanChoice}, Computer gets a point`;
+  }
+
+  updateScore();
+  showWinner(targetScore);
+}
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () =>
+    playRound(button.dataset.choice, getComputerChoice()),
+  );
+});
+
+resetButton.addEventListener("click", () => resetGame());
